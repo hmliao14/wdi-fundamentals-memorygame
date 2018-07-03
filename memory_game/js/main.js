@@ -3,25 +3,25 @@ var cards = [
 		suitRank: "heartQueen",
 		rank: "queen",
 		suit: "hearts",
-		cardImage: "images/queen-of-hearts.png"
+		cardImage: "memory_game/images/queen-of-hearts.png"
 	},
 	{
 		suitRank: "diamondQueen",
 		rank: "queen",
 		suit: "diamonds",
-		cardImage: "images/queen-of-diamonds.png"
+		cardImage: "memory_game/images/queen-of-diamonds.png"
 	},
 	{
 		suitRank: "heartKing",
 		rank: "king",
 		suit: "hearts",
-		cardImage: "images/king-of-hearts.png"
+		cardImage: "memory_game/images/king-of-hearts.png"
 	},
 	{
 		suitRank: "diamondKing",
 		rank: "king",
 		suit: "diamonds",
-		cardImage: "images/king-of-diamonds.png"
+		cardImage: "memory_game/images/king-of-diamonds.png"
 	}
 
 ];
@@ -35,12 +35,12 @@ var timer = new stopwatch('timer');
 var announceElement = document.querySelector('.announcement');
 var bestRecordEle = document.querySelector('.highestRecord');
 
-// This is a function that I modified from stopwatch2.js to 
+// This is a function that I modified from stopwatch2.js to
 // take into a output time from stopwatch2.js's currentTime() and revert
 // back to it. E.g. timer.currentTime() output the current time in
 // 850500 is equal to 850 seconds and 500 millseconds. I added currentTime()
 // and formatT() so i can compare the end of game time to the best record time.
-// Please note that the stopwatch2.js is taken from an online source with 
+// Please note that the stopwatch2.js is taken from an online source with
 // free to use license. Please look at stopwatch2.js for original detailed message.
 var formatT = function(num) {
 	var h, m, s, ms;
@@ -61,7 +61,7 @@ var formatT = function(num) {
 var checkForMatch = function(){
 	// If the user have not clicked two cards, then we exit
 	// The recent second and fourth element represent the cards' suit&&rank
-	if(cardsInPlay[index+1]===undefined || 
+	if(cardsInPlay[index+1]===undefined ||
 		cardsInPlay[index+3]===undefined) {
 		return;
 	}
@@ -85,14 +85,14 @@ var checkForMatch = function(){
     	timeOutID = setTimeout(eraseAnnounce, milSec);
     	playerScore++;
     	scoreElement.innerHTML =  "You Score: " + playerScore;
-    	index = index + 4;  
+    	index = index + 4;
     	// For boardSize of 16 cards, total of 8 (16/2) pairs can be made.
     	// This is where player matched all possible pairs. Now we
     	// stop the timer, clear the object, update best record, and display
     	// approximate msg and record on the screen.
-    	if(playerScore*2 === boardSize) { 
+    	if(playerScore*2 === boardSize) {
     		timer.stop();
-    		clearTimeout(timeOutID); 
+    		clearTimeout(timeOutID);
     		if(timer.currentTime() < bestRecord || bestRecord === 0) {
     			bestRecord = timer.currentTime();
     			alert("New Record! " + formatT(bestRecord));
@@ -102,7 +102,7 @@ var checkForMatch = function(){
     	}
     } else {
     	// If no match, reset the clicked images to facedown
-    	// and pop out the two cards' ID and suitRank in the array 
+    	// and pop out the two cards' ID and suitRank in the array
     	// so user can click them again
     	announceElement.textContent = "Sorry, try again.";
     	timeOutID = setTimeout(eraseAnnounce, milSec);
@@ -117,7 +117,7 @@ var checkForMatch = function(){
     }
     function faceDown(id) {
     	cardElement = document.querySelector(id);
-    	cardElement.setAttribute('src', "images/back.png");
+    	cardElement.setAttribute('src', "memory_game/images/back.png");
     }
 };
 
@@ -128,7 +128,7 @@ var checkForMatch = function(){
 var flipCard = function(){
 	var cardId = this.getAttribute('data-id');
 	var cardType = this.getAttribute('data-card-type');
-	// Check if the card is already flipped by checking its id to 
+	// Check if the card is already flipped by checking its id to
 	// the card id thats already flipped in the array
 	// If flipped, exit, else we push into array to compare
 	for(var i = 0; i < cardsInPlay.length; i ++) {
@@ -136,7 +136,7 @@ var flipCard = function(){
 			return;
 		}
 	}
-	// Push the cardId and the card's suit/rank 
+	// Push the cardId and the card's suit/rank
 	// into 1st and 2nd element
 	cardsInPlay.push(cardId, cards[cardType].suitRank);
 	this.setAttribute('src',cards[cardType].cardImage);
@@ -158,7 +158,7 @@ var createBoard = function() {
 	var j = 0;
 	for (var i =0; i < boardSize; i++) {
 		newElement = document.createElement('img');
-		newElement.setAttribute('src',"images/back.png");
+		newElement.setAttribute('src',"memory_game/images/back.png");
 		if(i%4 === 0) {
 			randomIndex = randomInt(4);
 			j = 0;
