@@ -2,7 +2,11 @@ Hello!
 
 Introduction:
 This is a memory game created by Huan Ming Liao as part of General Assembly's 
-Web Development Immersive pre-work (8/14-11/3 Cohort) in San Francisco. In addition to the original assignment, I also incorporated the bonus challenge (Track User Score) from the pre-work and my own extra features, which mainly includes the following:
+Web Development Immersive pre-work (8/14-11/3 Cohort) in San Francisco. 
+
+You may experience the final product here: **https://hmliao14.github.io/memory_game/index.html**
+
+In addition to the original assignment, I also incorporated the bonus challenge (Track User Score) from the pre-work and my own extra features, which mainly includes the following:
 - Simplify game state with Start/Reset button
 - “Randomized” card placement after each game 
 - Check flipped pair by comparing its suit and rank
